@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GTTI Mianwali — Govt. Technical Training Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;line-height:1.6}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:#fff;border-bottom:1px solid #e5e5e5;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:66px;
+}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-mark{
+  width:38px;height:38px;background:#1a4731;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:'Lora',serif;font-weight:700;font-size:16px;
+  border-radius:4px;
+}
+.nav-name{font-size:15px;font-weight:600;color:#1a1a1a;letter-spacing:.3px}
+.nav-name small{display:block;font-size:10px;font-weight:400;color:#888;letter-spacing:.5px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:13px;color:#555;text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#1a4731}
+.nav-enroll{
+  background:#1a4731;color:#fff;
+  border:none;padding:9px 22px;font-size:13px;font-weight:500;
+  border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;
+  transition:background .2s;
+}
+.nav-enroll:hover{background:#14382a}
+
+/* HERO */
+.hero{
+  background:#f8f7f5;
+  border-bottom:1px solid #e5e5e5;
+  padding:80px 64px 88px;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:#1a4731;background:#e8f2ec;
+  padding:5px 12px;border-radius:20px;margin-bottom:20px;
+}
+.hero-tag::before{content:'';width:6px;height:6px;background:#1a4731;border-radius:50%}
+.hero h1{
+  font-family:'Lora',serif;
+  font-size:clamp(36px,4vw,52px);
+  font-weight:700;line-height:1.2;
+  color:#111;margin-bottom:16px;
+}
+.hero h1 span{color:#1a4731}
+.hero p{font-size:15px;color:#555;line-height:1.8;max-width:440px;margin-bottom:32px}
+.hero-btns{display:flex;gap:12px}
+.btn-primary{
+  background:#1a4731;color:#fff;border:none;
+  padding:12px 28px;font-size:13px;font-weight:500;
+  border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;
+  transition:background .2s;
+}
+.btn-primary:hover{background:#14382a}
+.btn-secondary{
+  background:#fff;color:#333;border:1px solid #ddd;
+  padding:12px 28px;font-size:13px;font-weight:500;
+  border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;
+  transition:border-color .2s,color .2s;
+}
+.btn-secondary:hover{border-color:#1a4731;color:#1a4731}
+
+.hero-image{
+  position:relative;border-radius:8px;overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,0.12);
+}
+.hero-image img{width:100%;height:380px;object-fit:cover;display:block}
+.hero-image-badge{
+  position:absolute;bottom:20px;left:20px;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(8px);
+  padding:12px 18px;border-radius:6px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+}
+.hero-image-badge .n{font-family:'Lora',serif;font-size:22px;font-weight:700;color:#1a4731}
+.hero-image-badge .l{font-size:11px;color:#888;margin-top:1px}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid #e5e5e5;
+}
+.stat{
+  padding:36px 40px;border-right:1px solid #e5e5e5;
+  transition:background .2s;
+}
+.stat:last-child{border-right:none}
+.stat:hover{background:#fafafa}
+.stat-num{
+  font-family:'Lora',serif;font-size:36px;font-weight:700;
+  color:#1a4731;line-height:1;
+}
+.stat-label{font-size:12px;color:#888;margin-top:6px;font-weight:500}
+
+/* SECTION */
+.section{padding:80px 64px}
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:#1a4731;margin-bottom:10px;
+}
+.section h2{
+  font-family:'Lora',serif;font-size:clamp(28px,3vw,38px);
+  font-weight:700;color:#111;margin-bottom:12px;
+}
+.section-intro{font-size:14px;color:#666;max-width:520px;line-height:1.8}
+
+/* FILTER */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 32px}
+.filter-btn{
+  font-size:12px;font-weight:500;letter-spacing:.3px;
+  padding:8px 18px;border:1px solid #ddd;background:#fff;
+  color:#666;border-radius:20px;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:#1a4731;color:#fff;border-color:#1a4731;
+}
+
+/* TRADES */
+.trades-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;
+}
+.trade-card{
+  border:1px solid #e8e8e8;border-radius:8px;overflow:hidden;
+  background:#fff;transition:box-shadow .25s,transform .25s;
+}
+.trade-card.hidden{display:none}
+.trade-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.09);transform:translateY(-3px)}
+.card-img{height:190px;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.trade-card:hover .card-img img{transform:scale(1.04)}
+.card-body{padding:22px}
+.card-badge{
+  display:inline-block;font-size:10px;font-weight:600;letter-spacing:.8px;
+  text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:12px;
+}
+.badge-dae {background:#e8f2ec;color:#1a6b3a}
+.badge-gii {background:#fef3e0;color:#b45309}
+.badge-giii{background:#eef2ff;color:#3730a3}
+.badge-cert{background:#fdf2f8;color:#9d174d}
+.card-body h3{font-family:'Lora',serif;font-size:17px;font-weight:700;color:#111;margin-bottom:8px}
+.card-body p{font-size:13px;color:#666;line-height:1.7;margin-bottom:16px}
+.card-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid #f0f0f0;padding-top:14px;
+}
+.card-footer span{font-size:11px;color:#999}
+.card-footer strong{font-size:11px;color:#1a4731;font-weight:600}
+
+/* ABOUT */
+.about-section{background:#f8f7f5;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative;border-radius:8px;overflow:hidden}
+.about-img-wrap img{width:100%;height:440px;object-fit:cover;display:block}
+.about-text h2{margin-bottom:20px}
+.about-text p{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+.about-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.about-list li{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:#444;
+}
+.about-list li::before{
+  content:'';width:6px;height:6px;background:#1a4731;
+  border-radius:50%;flex-shrink:0;
+}
+
+/* ADMISSION STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e5e5e5;margin-top:48px}
+.step{background:#fff;padding:36px 28px}
+.step-num{
+  width:36px;height:36px;background:#1a4731;color:#fff;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;margin-bottom:16px;
+}
+.step h4{font-family:'Lora',serif;font-size:16px;font-weight:700;color:#111;margin-bottom:8px}
+.step p{font-size:13px;color:#666;line-height:1.7}
+
+/* CONTACT */
+.contact-section{background:#fff}
+.contact-grid{display:grid;grid-template-columns:3fr 2fr;gap:48px;margin-top:48px}
+.contact-card{
+  background:#f8f7f5;border:1px solid #e5e5e5;
+  border-radius:8px;padding:40px;
+}
+.contact-card h3{font-family:'Lora',serif;font-size:20px;font-weight:700;color:#111;margin-bottom:28px}
+.info-row{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start}
+.info-icon{
+  width:40px;height:40px;background:#e8f2ec;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;flex-shrink:0;
+}
+.info-key{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#1a4731;margin-bottom:3px}
+.info-val{font-size:14px;color:#333;line-height:1.5}
+
+.tevta-card{
+  background:#1a4731;border-radius:8px;padding:40px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:12px;
+}
+.tevta-card .tevta-badge{
+  width:70px;height:70px;border-radius:50%;
+  border:2px solid rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Lora',serif;font-size:13px;font-weight:700;
+  color:#fff;letter-spacing:1px;margin-bottom:8px;
+}
+.tevta-card h3{font-family:'Lora',serif;font-size:20px;color:#fff;font-weight:700}
+.tevta-card p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.8}
+.tevta-card a{
+  display:inline-block;margin-top:16px;
+  background:#fff;color:#1a4731;
+  padding:10px 24px;border-radius:4px;
+  text-decoration:none;font-size:12px;font-weight:600;
+  letter-spacing:.5px;transition:opacity .2s;
+}
+.tevta-card a:hover{opacity:0.9}
+
+/* FOOTER */
+footer{
+  background:#111;padding:32px 64px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.foot-left{font-size:13px;color:#888}
+.foot-left strong{color:#ccc}
+.foot-right{font-size:12px;color:#666;text-align:right;line-height:1.7}
+
+/* DIVIDER */
+.divider{height:1px;background:#e5e5e5;margin:0 64px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:48px 24px;gap:36px}
+  .hero-image{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{padding:24px}
+  .section{padding:56px 24px}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:12px;padding:24px;text-align:center}
+  .foot-right{text-align:center}
+  .divider{margin:0 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">G</div>
+    <div class="nav-name">
+      GTTI Mianwali
+      <small>TEVTA Punjab · Govt. of Pakistan</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#trades">Trades</a>
+    <a href="#about">About</a>
+    <a href="#admission">Admission</a>
+    <a href="#contact">Contact</a>
+    <button class="nav-enroll" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enroll Now</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-tag">TEVTA Certified · Mianwali, Punjab</div>
+    <h1>Govt. Technical<br>Training Institute<br><span>Mianwali</span></h1>
+    <p>Providing quality technical education to the youth of Mianwali district. Government-certified trade programs from 12 to 36 months — practical, affordable, and career-ready.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('trades').scrollIntoView({behavior:'smooth'})">View Trades</button>
+      <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80" alt="Technical Training"/>
+    <div class="hero-image-badge">
+      <div class="n">8+ Trades</div>
+      <div class="l">TEVTA Certified Programs</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-num">8+</div>
+    <div class="stat-label">Trades Offered</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">36</div>
+    <div class="stat-label">Months (DAE Level)</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Govt. Certified</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">50+</div>
+    <div class="stat-label">Years of Service</div>
+  </div>
+</div>
+
+<!-- TRADES -->
+<section class="section" id="trades">
+  <div class="section-label">Our Programs</div>
+  <h2>Available Trades</h2>
+  <p class="section-intro">All programs are affiliated with the Trade Testing Board Punjab (TTBP). Certificates are recognized nationally and internationally.</p>
+
+  <div class="filter-row">
+    <button class="filter-btn active" data-filter="all">All Trades</button>
+    <button class="filter-btn" data-filter="dae">DAE — 3 Year</button>
+    <button class="filter-btn" data-filter="gii">G-II — 2 Year</button>
+    <button class="filter-btn" data-filter="giii">G-III — 1 Year</button>
+    <button class="filter-btn" data-filter="cert">Certificate</button>
+  </div>
+
+  <div class="trades-grid">
+
+    <div class="trade-card reveal" data-cat="dae">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&q=75" alt="Electrical" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-dae">DAE · 36 Months</span>
+        <h3>Electrical Technology</h3>
+        <p>Power systems, motor control, industrial wiring, and electrical installations. Prepares graduates for WAPDA, IESCO, and overseas employment.</p>
+        <div class="card-footer">
+          <span>Qualification: Matric</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="dae">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=75" alt="Electronics" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-dae">DAE · 36 Months</span>
+        <h3>Electronics Technology</h3>
+        <p>Digital circuits, microcontrollers, communication systems, and consumer electronics. Highest enrollment program — 150 seats per batch.</p>
+        <div class="card-footer">
+          <span>Qualification: Matric</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="gii">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&q=75" alt="Electronics App" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-gii">G-II · 24 Months</span>
+        <h3>Electronics Application</h3>
+        <p>Radio, TV, and consumer electronics repair. Practical troubleshooting and circuit diagnosis with hands-on workshop training.</p>
+        <div class="card-footer">
+          <span>Qualification: 8th Pass</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="gii">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=600&q=75" alt="Auto Mechanic" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-gii">G-II · 24 Months</span>
+        <h3>Auto Mechanic</h3>
+        <p>Engine overhaul, fuel injection, auto electrical, and transmission systems. High demand in local workshops and Gulf/Saudi markets.</p>
+        <div class="card-footer">
+          <span>Qualification: 8th Pass</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="gii">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75" alt="Draftsman Civil" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-gii">G-II · 24 Months</span>
+        <h3>Draftsman Civil (AutoCAD)</h3>
+        <p>Construction drawings, structural layouts, and site plans using AutoCAD software. Demand in NHA, WAPDA, and construction firms.</p>
+        <div class="card-footer">
+          <span>Qualification: Matric</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="giii">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75" alt="Welder" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-giii">G-III · 12 Months</span>
+        <h3>Welder</h3>
+        <p>Arc, MIG/TIG welding, gas cutting, and pipe fabrication. One of Pakistan's most in-demand trades for Gulf and Middle East employment.</p>
+        <div class="card-footer">
+          <span>Qualification: 8th Pass</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="giii">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75" alt="Electrician" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-giii">G-III · 12 Months</span>
+        <h3>Electrician</h3>
+        <p>Domestic and industrial wiring, panel boards, and electrical safety. Qualifies for WAPDA, construction sites, and self-employment.</p>
+        <div class="card-footer">
+          <span>Qualification: 8th Pass</span>
+          <strong>Jan &amp; Aug Intake</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="trade-card reveal" data-cat="cert">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=75" alt="Beautician" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-cert">Certificate · 6–12 Months</span>
+        <h3>Beautician</h3>
+        <p>Hair care, skin treatment, makeup artistry, and salon management. Ideal for women seeking self-employment or a professional beauty career.</p>
+        <div class="card-footer">
+          <span>Qualification: Open Entry</span>
+          <strong>Flexible Intake</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=75" alt="GTTI Workshop" loading="lazy"/>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-label">About the Institute</div>
+      <h2>Serving Mianwali for Decades</h2>
+      <p>Govt. Technical Training Institute Mianwali is operated by TEVTA (Technical Education & Vocational Training Authority), Government of Punjab. Located on Talagang Road, near Govt. Degree College, Wandhi Arayanwali.</p>
+      <p>We serve students from Mianwali, Bhakkar, Kundian, Isakhel, and surrounding areas. All trade certificates are issued by the <strong>Trade Testing Board Punjab (TTBP)</strong> — recognized nationally and in Gulf countries.</p>
+      <ul class="about-list">
+        <li>TEVTA Punjab — Government of Punjab Certified</li>
+        <li>TTBP Certified Certificates for all trades</li>
+        <li>DAE (3yr), G-II (2yr), G-III (1yr) programs</li>
+        <li>Practical workshop training with industry tools</li>
+        <li>Principal: Engr. Farhan Ahmad</li>
+        <li>Contact: 0459-233829</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSION STEPS -->
+<section class="section" id="admission">
+  <div class="section-label">How to Apply</div>
+  <h2>Admission Process</h2>
+  <p class="section-intro">Simple four-step process to enroll. Sessions open twice a year — January and August.</p>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Choose Your Trade</h4>
+      <p>Select from 8+ TEVTA trades based on your interest and qualification. Visit or call for guidance.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Submit Documents</h4>
+      <p>B-Form / CNIC, school certificates, and passport photos at the admission office.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Pay Admission Fee</h4>
+      <p>Affordable government fee structure. Concessions available for deserving students.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Begin Training</h4>
+      <p>Start practical and theoretical classes in on-campus workshops with experienced instructors.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Get in Touch</h2>
+  <p class="section-intro">For admissions, fee structure, trade availability, or any queries — contact the institute directly.</p>
+
+  <div class="contact-grid">
+    <div class="contact-card reveal">
+      <h3>Institute Information</h3>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-key">Address</div>
+          <div class="info-val">Talagang Road, Near Govt. Degree College,<br>Wandhi Arayanwali, Mianwali, Punjab</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-key">Phone</div>
+          <div class="info-val">0459-233829</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">👤</div>
+        <div>
+          <div class="info-key">Principal</div>
+          <div class="info-val">Engr. Farhan Ahmad</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕘</div>
+        <div>
+          <div class="info-key">Office Hours</div>
+          <div class="info-val">Monday – Saturday &nbsp;|&nbsp; 8:00 AM – 2:00 PM</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-key">Admission Sessions</div>
+          <div class="info-val">January &amp; August each year</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tevta-card reveal">
+      <div class="tevta-badge">TEVTA</div>
+      <h3>Under TEVTA Punjab</h3>
+      <p>Technical Education &amp; Vocational Training Authority<br>Government of Punjab, Pakistan<br><br>All certificates by<br><strong style="color:#fff">Trade Testing Board Punjab</strong></p>
+      <a href="https://tevta.gop.pk" target="_blank">Visit TEVTA Portal →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">
+    © 2025 <strong>Govt. Technical Training Institute, Mianwali</strong><br>
+    Under TEVTA Punjab · Government of Pakistan
+  </div>
+  <div class="foot-right">
+    Talagang Road, Wandhi Arayanwali, Mianwali<br>
+    0459-233829
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.trade-card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+    });
+  });
+});
+</script>
+</body>
+</html>
